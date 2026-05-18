@@ -1,146 +1,92 @@
-# 🐾 PAWCARE Pro — Veterinary Clinic Management System
+# 🐾 Veterinary Clinic Management System
 
-A full-featured, browser-based veterinary clinic management system built with vanilla HTML, CSS, and JavaScript. PAWCARE Pro provides clinic staff with a unified interface to manage every aspect of day-to-day operations — from patient records and appointments to billing, inventory, and kennel management.
+A comprehensive, full-stack database application designed to manage the operations of a modern veterinary clinic. Built as an academic/professional project demonstrating advanced database concepts, RESTful API design, and a responsive frontend interface.
 
----
+## 🚀 Features
 
-## ✨ Features
+### 🗄️ Advanced Database Architecture
+- **Normalized Schema**: 19 tables rigorously designed to 3NF/BCNF standards.
+- **Enhanced ERD Implementation**: Handles generalization/specialization hierarchies (e.g., separating Pets into Mammal, Avian, and Reptile; Medical Records into Surgery and Wellness).
+- **Advanced SQL Queries**: Implementation of complex joins, correlated/non-correlated subqueries, and set operations (UNION, INTERSECT, EXCEPT).
+- **Programmability (PL/SQL equivalent)**:
+  - **Triggers**: Automated billing upon appointment completion, double-booking prevention, audit logging.
+  - **Stored Procedures**: Automated appointment scheduling, checkout calculation, monthly revenue reports.
+  - **Cursors**: Automated vaccination reminders and low-stock inventory alerts.
+  - **Functions**: Dynamic age calculation and bill totaling.
+- **Security**: Robust Data Control Language (DCL) scripts establishing granular roles (`clinic_admin`, `vet_user`, `receptionist`, `report_viewer`).
 
-### 📊 Dashboard
-- Live operational overview including total pets, owners, veterinarians, and upcoming appointments
-- Real-time revenue tracking and pending billing summary
-- Low stock alerts and kennel occupancy at a glance
-- Recent appointments feed with status badges
+### 💻 Full-Stack Web Application
+- **Backend**: Node.js & Express REST API managing comprehensive CRUD operations across all entities. MySQL connection pooling for high performance.
+- **Frontend**: A modern Single Page Application (SPA) built with Vanilla JavaScript, HTML5, and CSS3. Features a premium dark theme utilizing glassmorphism, responsive data tables, modals, and toast notifications.
+- **Dashboard**: Real-time analytical dashboard showing metrics like total revenue, upcoming appointments, kennel occupancy, and low-stock warnings.
 
-### 👤 Owner Management
-- Register and manage pet owner profiles with contact details and emergency contacts
-- Membership status tracking (Active, Inactive, Premium)
+## 🛠️ Technology Stack
+* **Database**: MySQL 8.0+
+* **Backend**: Node.js, Express.js, `mysql2`
+* **Frontend**: HTML5, CSS3 (Custom Design System), Vanilla JavaScript
 
-### 🐕 Pet Management
-- Comprehensive pet profiles including species, breed, gender, and date of birth
-- Direct association with registered owners
+## 📂 Project Structure
 
-### ⚕️ Veterinarian Management
-- Staff directory with specialization, license number, and hire date
-- Full contact information management
-
-### 📅 Appointment Scheduling
-- Schedule, edit, and track appointments with pet and vet assignment
-- Status management: Scheduled, Completed, Cancelled, No-Show
-- Appointment notes and reason documentation
-
-### 🔬 Clinical Records
-- **Procedures** — Define and price clinical procedures
-- **Vaccinations** — Track vaccine administration and upcoming due dates per pet
-- **Medical Records** — Detailed diagnosis, treatment, and notes linked to appointments (General, Surgery, Wellness)
-
-### 💳 Billing
-- Generate and manage bills linked to appointments
-- Payment status tracking: Pending, Paid, Overdue, Cancelled
-- Multiple payment methods: Cash, Card, Insurance, Online
-
-### 📦 Inventory & Supplies
-- Track medications, equipment, consumables, and vaccines
-- Reorder level alerts and supplier management
-- Unit pricing and restocking date tracking
-
-### 🏠 Kennel Management
-- Manage kennel stays with check-in/check-out dates and daily rates
-- Room-level availability linked to clinic room records
-
-### 🚪 Clinic Rooms
-- Room directory with type classification: Examination, Surgery, Recovery, Kennel
-- Real-time status: Available, Occupied, Maintenance
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | HTML5, CSS3, Vanilla JavaScript (ES6+) |
-| Fonts | Google Fonts — Playfair Display, Plus Jakarta Sans |
-| API | RESTful backend via `http://localhost:8000/api` |
-| Architecture | Single Page Application (SPA) with dynamic routing |
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- A running backend API server at `http://localhost:8000/api`
-- Any modern web browser
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/pawcare-pro.git
-   cd pawcare-pro
-   ```
-
-2. Ensure your backend API is running and accessible at `http://localhost:8000/api`.
-
-3. Open `index.html` in your browser or serve it via a local server:
-   ```bash
-   # Using Python
-   python -m http.server 3000
-
-   # Using Node.js (npx)
-   npx serve .
-   ```
-
-4. Navigate to `http://localhost:3000` in your browser.
-
----
-
-## 📁 Project Structure
-
-```
-pawcare-pro/
-├── index.html       # Application shell and sidebar navigation
-├── index.css        # Styling — design tokens, layout, components
-└── app.js           # Application logic — routing, CRUD, forms, API calls
+```text
+├── sql/                        # Database Definition & Scripts
+│   ├── 01_ddl_create_tables.sql
+│   ├── 02_dcl_permissions.sql
+│   ├── 03_data_population.sql
+│   ├── 04_indexes.sql
+│   ├── 05_views.sql
+│   ├── 06_advanced_queries.sql
+│   └── 07_stored_procedures.sql
+├── server/                     # Node.js Express Backend
+│   ├── server.js               # REST API & Database connection
+│   └── package.json
+├── frontend/                   # Vanilla JS Frontend Client
+│   ├── index.html
+│   ├── index.css
+│   └── app.js
+├── EERDqq.drawio               # Enhanced Entity Relationship Diagram
+└── Project Manual.pdf          # Initial Project Requirements
 ```
 
----
+## ⚙️ Setup & Installation
 
-## 🔌 API Endpoints
+### 1. Database Setup
+1. Open **MySQL Workbench** or your preferred MySQL client.
+2. Run the provided combined script (or run the scripts sequentially from `01` to `07` in the `sql/` folder) to create the schema, populate mock data, and initialize the stored procedures.
+   *(Note: You can combine `01`, `03`, `04`, `05`, and `07` into a single run to instantly set up the database for the application).*
 
-The frontend consumes the following REST endpoints:
+### 2. Backend Setup
+1. Navigate to the `server/` directory:
+   ```bash
+   cd server
+   ```
+2. Install the required Node.js dependencies:
+   ```bash
+   npm install
+   ```
+3. Update the database credentials:
+   Open `server/server.js` and update the MySQL connection pool (around line 17) with your local MySQL `user` and `password`.
+   ```javascript
+   const pool = mysql.createPool({
+     host: 'localhost',
+     user: 'root',
+     password: 'YOUR_PASSWORD',
+     database: 'vet_clinic',
+     // ...
+   });
+   ```
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/dashboard` | Dashboard statistics |
-| `CRUD /api/owners` | Pet owner management |
-| `CRUD /api/pets` | Pet profile management |
-| `CRUD /api/vets` | Veterinarian management |
-| `CRUD /api/appointments` | Appointment scheduling |
-| `CRUD /api/procedures` | Clinical procedures |
-| `CRUD /api/vaccinations` | Vaccination records |
-| `CRUD /api/medical-records` | Medical record management |
-| `CRUD /api/bills` | Billing management |
-| `CRUD /api/supplies` | Inventory management |
-| `CRUD /api/kennel-stays` | Kennel stay management |
-| `CRUD /api/clinic-rooms` | Clinic room management |
+### 3. Run the Application
+1. Start the Express server:
+   ```bash
+   npm start
+   # or
+   node server.js
+   ```
+2. Open your web browser and navigate to:
+   ```text
+   http://localhost:3000
+   ```
 
-> Each `CRUD` endpoint supports `GET`, `POST`, `PUT /{id}`, and `DELETE /{id}` operations.
 
----
-
-## 🎨 Design System
-
-- **Theme:** Warm cream background with deep forest green sidebar and gold accents
-- **Typography:** Playfair Display (headings) + Plus Jakarta Sans (body)
-- **Responsive:** Adapts to tablet and mobile screen sizes with a collapsible sidebar
-- **Animations:** Smooth page transitions, fade-in stats, and row entrance animations
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-> Built with care for veterinary professionals who put their patients first. 🐾
+## 📝 License
+This project is open-source and available under the MIT License.
