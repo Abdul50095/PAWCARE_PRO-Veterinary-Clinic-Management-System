@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Veterinary Clinic Management System — Manage pets, appointments, medical records, billing, and more.">
+  <title>PAWCARE Pro — Veterinary Clinic Management</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">🐾</div>
+        <div>
+          <h1>PAWCARE Pro</h1>
+          <span>Management System</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <a class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">📊</span><span>Dashboard</span>
+        </a>
+
+        <div class="nav-section-label">Management</div>
+        <a class="nav-item" data-page="owners">
+          <span class="nav-icon">👤</span><span>Owners</span>
+        </a>
+        <a class="nav-item" data-page="pets">
+          <span class="nav-icon">🐕</span><span>Pets</span>
+        </a>
+        <a class="nav-item" data-page="vets">
+          <span class="nav-icon">⚕️</span><span>Veterinarians</span>
+        </a>
+        <a class="nav-item" data-page="appointments">
+          <span class="nav-icon">📅</span><span>Appointments</span>
+        </a>
+
+        <div class="nav-section-label">Clinical</div>
+        <a class="nav-item" data-page="procedures">
+          <span class="nav-icon">🔬</span><span>Procedures</span>
+        </a>
+        <a class="nav-item" data-page="vaccinations">
+          <span class="nav-icon">💉</span><span>Vaccinations</span>
+        </a>
+        <a class="nav-item" data-page="medical-records">
+          <span class="nav-icon">📋</span><span>Medical Records</span>
+        </a>
+
+        <div class="nav-section-label">Operations</div>
+        <a class="nav-item" data-page="bills">
+          <span class="nav-icon">💳</span><span>Billing</span>
+        </a>
+        <a class="nav-item" data-page="supplies">
+          <span class="nav-icon">📦</span><span>Supplies</span>
+        </a>
+        <a class="nav-item" data-page="kennel-stays">
+          <span class="nav-icon">🏠</span><span>Kennel Stays</span>
+        </a>
+        <a class="nav-item" data-page="clinic-rooms">
+          <span class="nav-icon">🚪</span><span>Clinic Rooms</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content" id="main-content">
+      <div class="spinner"></div>
+    </main>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Form</h3>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modal-cancel">Cancel</button>
+        <button class="btn btn-primary" id="modal-save">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
